@@ -1,7 +1,7 @@
 Introduction
 ============
 
-Register imagesloaded_ plugin in Plone's resource registry.
+Register jquery.imagesloaded_ plugin in Plone's resource registry.
 
 version: 1.0.4
 
