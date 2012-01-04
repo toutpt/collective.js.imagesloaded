@@ -2,18 +2,18 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="collective.js.imageloaded">
+    i18n_domain="collective.js.imagesloaded">
 
   <browser:resourceDirectory
-    name="collective.js.imageloaded"
+    name="collective.js.imagesloaded"
     directory="resources"
     />
 
   <genericsetup:registerProfile
       name="default"
-      title="collective.js.imageloaded"
+      title="collective.js.imagesloaded"
       directory="profiles/default"
-      description='Extension profile for collective.js.imageloaded.'
+      description='Extension profile for collective.js.imagesloaded.'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

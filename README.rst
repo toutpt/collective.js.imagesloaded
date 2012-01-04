@@ -1,11 +1,11 @@
 Introduction
 ============
 
-Register imageloaded_ plugin in Plone's resource registry.
+Register imagesloaded_ plugin in Plone's resource registry.
 
 version: 1.0.4
 
-About jquery.imageloaded
+About jquery.imagesloaded
 ========================
 
 A small jQuery plugin that triggers a callback after all the selected/child 
@@ -44,4 +44,4 @@ Authors
 
 .. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
 .. _makinacom:  http://www.makina-corpus.com
-.. _jquery.imageloaded: http://desandro.github.com/imagesloaded/
+.. _jquery.imagesloaded: http://desandro.github.com/imagesloaded/

@@ -3,9 +3,9 @@ import os
 
 version = '1.0'
 
-setup(name='collective.js.imageloaded',
+setup(name='collective.js.imagesloaded',
       version=version,
-      description="Register JQuery imageloaded plugin in Plone resource registry",
+      description="Register JQuery imagesloaded plugin in Plone resource registry",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -19,7 +19,7 @@ setup(name='collective.js.imageloaded',
       keywords='',
       author='JeanMichel FRANCOIS aka toutpt',
       author_email='toutpt@gmail.com',
-      url='https://github.com/collective/collective.js.imageloaded',
+      url='https://github.com/collective/collective.js.imagesloaded',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective', 'collective.js'],
