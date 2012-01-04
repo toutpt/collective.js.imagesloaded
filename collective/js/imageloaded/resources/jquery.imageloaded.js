@@ -1,29 +1,54 @@
-// $('img.photo',this).imagesLoaded(myFunction)
-// execute a callback when all images have loaded.
-// needed because .load() doesn't work on cached images
+/*!
+ * jQuery imagesLoaded plugin v1.0.4
+ * http://github.com/desandro/imagesloaded
+ *
+ * MIT License. by Paul Irish et al.
+ */
 
-// mit license. paul irish. 2010.
-// webkit fix from Oren Solomianik. thx!
+(function($, undefined) {
 
-// callback function is passed the last image to load
-//   as an argument, and the collection as `this`
+  // $('#my-container').imagesLoaded(myFunction)
+  // or
+  // $('img').imagesLoaded(myFunction)
 
+  // execute a callback when all images have loaded.
+  // needed because .load() doesn't work on cached images
 
-$.fn.imagesLoaded = function(callback){
-  var elems = this.filter('img'),
-      len   = elems.length;
-      
-  elems.bind('load',function(){
-      if (--len <= 0){ callback.call(elems,this); }
-  }).each(function(){
-     // cached images don't fire load sometimes, so we reset src.
-     if (this.complete || this.complete === undefined){
+  // callback function gets image collection as argument
+  //  `this` is the container
+
+  $.fn.imagesLoaded = function( callback ) {
+    var $this = this,
+        $images = $this.find('img').add( $this.filter('img') ),
+        len = $images.length,
+        blank = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
+    function triggerCallback() {
+      callback.call( $this, $images );
+    }
+
+    function imgLoaded( event ) {
+      if ( --len <= 0 && event.target.src !== blank ){
+        setTimeout( triggerCallback );
+        $images.unbind( 'load error', imgLoaded );
+      }
+    }
+
+    if ( !len ) {
+      triggerCallback();
+    }
+
+    $images.bind( 'load error',  imgLoaded ).each( function() {
+      // cached images don't fire load sometimes, so we reset src.
+      if (this.complete || typeof this.complete === "undefined"){
         var src = this.src;
         // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
         // data uri bypasses webkit log warning (thx doug jones)
-        this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        this.src = blank;
         this.src = src;
-     }  
-  });
-  return this;
-};
+      }
+    });
+
+    return $this;
+  };
+})(jQuery);

@@ -1,26 +1,47 @@
 Introduction
 ============
 
-Image loaded is needed by many jquery plugins like masonry (related to layout)
+Register imageloaded_ plugin in Plone's resource registry.
 
-This addon register the most used script to achieve this need::
+version: 1.0.4
 
-    $.fn.imagesLoaded = function(callback){
-      var elems = this.filter('img'),
-          len   = elems.length;
-          
-      elems.bind('load',function(){
-          if (--len <= 0){ callback.call(elems,this); }
-      }).each(function(){
-         // cached images don't fire load sometimes, so we reset src.
-         if (this.complete || this.complete === undefined){
-            var src = this.src;
-            // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
-            // data uri bypasses webkit log warning (thx doug jones)
-            this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-            this.src = src;
-         }  
-      });
-      return this;
-    };
+About jquery.imageloaded
+========================
 
+A small jQuery plugin that triggers a callback after all the selected/child 
+images have been loaded. Because you can't do `.load()` on cached images.
+
+::
+
+    $('#my-container').imagesLoaded( function( $images ) {
+      // callback provides one argument, the jQuery object of child images
+      console.log( $images.length + ' images have been loaded in ' + this )
+    });
+
+You can call `imagesLoaded` on a set of images as well.
+
+::
+
+    $('.article img').imagesLoaded( myFunction );
+
+Credits
+=======
+
+Companies
+---------
+
+|makinacom|_
+
+  * `Planet Makina Corpus <http://www.makina-corpus.org>`_
+  * `Contact us <mailto:python@makina-corpus.org>`_
+
+
+Authors
+
+  - JeanMichel FRANCOIS aka toutpt <toutpt@gmail.com>
+
+.. Contributors
+
+.. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
+.. _makinacom:  http://www.makina-corpus.com
+.. _jquery.imageloaded: http://desandro.github.com/imagesloaded/
