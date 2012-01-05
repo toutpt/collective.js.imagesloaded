@@ -6,7 +6,7 @@ Register jquery.imagesloaded_ plugin in Plone's resource registry.
 version: 1.0.4
 
 About jquery.imagesloaded
-========================
+=========================
 
 A small jQuery plugin that triggers a callback after all the selected/child 
 images have been loaded. Because you can't do `.load()` on cached images.
